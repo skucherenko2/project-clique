@@ -8,7 +8,11 @@ public static class GraphGenerator
 {
     public static Graph GenerateGraph(GraphGenerationOptions options, bool useMatrix)
     {
-        BasicRepresentation representation = useMatrix ? new MatrixRepresentation(options) : new ListRepresentation(options);
+        BasicRepresentation representation;
+
+        if (useMatrix) representation = new MatrixRepresentation(options);
+        
+        else representation = new ListRepresentation(options);
         
         Graph graph = new(representation);
         

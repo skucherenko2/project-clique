@@ -12,7 +12,7 @@ public class ListRepresentation : BasicRepresentation
             List.Add(new HashSet<int>());
         }
         
-        Random random = new();
+        Random random = new(options.RandomSeed);
         
         for (int i = 0; i < options.VerticesCount; i++)
         {

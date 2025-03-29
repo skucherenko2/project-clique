@@ -8,7 +8,7 @@ public class MatrixRepresentation : BasicRepresentation
     public MatrixRepresentation(GraphGenerationOptions options) : base(options)
     {
         Matrix = new bool[options.VerticesCount, options.VerticesCount];
-        Random random = new();
+        Random random = new(options.RandomSeed);
         
         for (int i = 0; i < options.VerticesCount; i++)
         {

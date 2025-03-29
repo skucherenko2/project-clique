@@ -6,6 +6,7 @@ public class GraphGenerationOptions
 {
     public int VerticesCount { get; }
     public float Density { get; }
+    public int RandomSeed;
 
     public int MaxPossibleEdges => VerticesCount * (VerticesCount - 1) / 2;
 
