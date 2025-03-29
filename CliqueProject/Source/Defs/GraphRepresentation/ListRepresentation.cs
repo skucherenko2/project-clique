@@ -34,4 +34,18 @@ public class ListRepresentation : BasicRepresentation
     }
 
     public override bool HasConnection(int vertexA, int vertexB) => List[vertexA].Contains(vertexB);
+    public override IEnumerable<int> GetVertexNeighbors(int vertexA)
+    {
+        if(vertexA < 0 || vertexA >= VerticesCount)
+            throw new ArgumentException("Vertex id is out of allowed range");
+        
+        for (int neighbour = 0; neighbour < VerticesCount; neighbour++)
+        {
+            if(vertexA == neighbour)
+                continue;
+            
+            if(List[vertexA].Contains(neighbour))
+                yield return neighbour;
+        }
+    }
 }

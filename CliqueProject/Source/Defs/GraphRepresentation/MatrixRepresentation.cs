@@ -20,6 +20,7 @@ public class MatrixRepresentation : BasicRepresentation
                 bool hasEdge = random.NextSingle() < options.Density;
                 
                 Matrix[i, j] = hasEdge;
+                Matrix[j, i] = hasEdge;
 
                 if (hasEdge)
                     EdgesCount++;
@@ -27,4 +28,18 @@ public class MatrixRepresentation : BasicRepresentation
         }
     }
     public override bool HasConnection(int vertexA, int vertexB) => Matrix[vertexA, vertexB];
+    public override IEnumerable<int> GetVertexNeighbors(int vertexA)
+    {
+        if(vertexA < 0 || vertexA >= VerticesCount)
+            throw new ArgumentException("Vertex id is out of allowed range");
+
+        for (int neighbour = 0; neighbour < VerticesCount; neighbour++)
+        {
+            if(vertexA == neighbour)
+                continue;
+            
+            if(Matrix[vertexA, neighbour])
+                yield return neighbour;
+        }
+    }
 }
