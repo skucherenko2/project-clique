@@ -12,4 +12,5 @@ public abstract class BasicRepresentation
     public int VerticesCount;
     public int EdgesCount;
     public abstract bool HasConnection(int vertexA, int vertexB);
+    public abstract IEnumerable<int> GetVertexNeighbors(int vertexA);
 }
